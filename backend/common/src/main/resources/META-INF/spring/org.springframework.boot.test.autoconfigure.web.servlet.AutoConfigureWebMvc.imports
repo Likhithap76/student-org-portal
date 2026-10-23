@@ -1,0 +1,3 @@
+com.studentorgs.portal.common.config.CoreAutoConfiguration
+com.studentorgs.portal.common.config.ServletWebAutoConfiguration
+com.studentorgs.portal.common.config.SecurityAutoConfiguration

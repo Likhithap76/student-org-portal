@@ -1,0 +1,8 @@
+# Defaults for the "supabase" profile.
+spring:
+  datasource:
+    hikari:
+      data-source-properties:
+        # Supabase's transaction pooler (port 6543) does not support server-side prepared statements;
+        # without this the driver fails with 'prepared statement "S_1" already exists'.
+        prepareThreshold: 0

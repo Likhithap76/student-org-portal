@@ -1,0 +1,48 @@
+package com.studentorgs.portal.common.security;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.springframework.http.HttpHeaders;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * Authenticates requests that carry {@code Authorization: Bearer <jwt>}.
+ * An invalid token leaves the request unauthenticated; the entry point then answers 401.
+ */
+@Slf4j
+@RequiredArgsConstructor
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
+
+    private static final String BEARER = "Bearer ";
+
+    private final JwtService jwtService;
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
+            throws ServletException, IOException {
+        String header = request.getHeader(HttpHeaders.AUTHORIZATION);
+        if (header != null && header.startsWith(BEARER)
+                && SecurityContextHolder.getContext().getAuthentication() == null) {
+            try {
+                AuthenticatedUser user = jwtService.parse(header.substring(BEARER.length()).trim());
+                var authentication = new UsernamePasswordAuthenticationToken(
+                        user, null, List.of(new SimpleGrantedAuthority(user.role().authority())));
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+            } catch (InvalidTokenException e) {
+                log.debug("Rejected bearer token: {}", e.getCause() == null ? "invalid" : e.getCause().getClass().getSimpleName());
+            }
+        }
+        chain.doFilter(request, response);
+    }
+}

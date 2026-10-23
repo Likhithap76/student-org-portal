@@ -1,0 +1,16 @@
+# Defaults for the "local" profile (the default until Supabase is ready):
+# every service shares one file-based H2 database, so run-all.sh works without Supabase.
+# ORGPORTAL_DATA_DIR is set to backend/data by run-all.sh; spring-boot:run also runs from backend/.
+spring:
+  datasource:
+    url: jdbc:h2:file:${ORGPORTAL_DATA_DIR:./data}/orgportal;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;AUTO_SERVER=TRUE
+    username: sa
+    password: ""
+    driver-class-name: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        boot.allow_jdbc_metadata_access: true

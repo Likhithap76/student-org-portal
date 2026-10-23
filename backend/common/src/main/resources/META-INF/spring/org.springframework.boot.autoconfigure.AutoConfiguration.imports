@@ -1,0 +1,6 @@
+com.studentorgs.portal.common.config.CoreAutoConfiguration
+com.studentorgs.portal.common.config.ServletWebAutoConfiguration
+com.studentorgs.portal.common.config.SecurityAutoConfiguration
+com.studentorgs.portal.common.config.AuditAutoConfiguration
+com.studentorgs.portal.common.config.ClientAutoConfiguration
+com.studentorgs.portal.common.config.OpenApiAutoConfiguration

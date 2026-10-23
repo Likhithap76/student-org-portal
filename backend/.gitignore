@@ -1,0 +1,17 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Build output and local logs
+target/
+logs/
+
+# Local H2 database ("local" profile)
+data/
+
+# IDE / OS
+.idea/
+*.iml
+.vscode/
+.DS_Store

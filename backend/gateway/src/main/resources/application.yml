@@ -1,0 +1,126 @@
+# Shared settings (JWT secret, service URLs, logging) come from common's orgportal-defaults.yml.
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: ${orgportal.services.user-url}
+          predicates:
+            - Path=/api/auth/**,/api/users/**,/api/memberships/**
+          filters:
+            - StripPrefix=1
+        - id: event-service
+          uri: ${orgportal.services.event-url}
+          predicates:
+            - Path=/api/events/**
+          filters:
+            - StripPrefix=1
+        - id: task-service
+          uri: ${orgportal.services.task-url}
+          predicates:
+            - Path=/api/committees/**,/api/tasks/**
+          filters:
+            - StripPrefix=1
+        - id: content-service
+          uri: ${orgportal.services.content-url}
+          predicates:
+            - Path=/api/announcements/**,/api/documents/**
+          filters:
+            - StripPrefix=1
+        - id: notification-service
+          uri: ${orgportal.services.notification-url}
+          predicates:
+            - Path=/api/notifications/**
+          filters:
+            - StripPrefix=1
+        - id: reporting-service
+          uri: ${orgportal.services.reporting-url}
+          predicates:
+            - Path=/api/reports/**
+          filters:
+            - StripPrefix=1
+        - id: ai-service
+          uri: ${orgportal.services.ai-url}
+          predicates:
+            - Path=/api/ai/**
+          filters:
+            - StripPrefix=1
+        # OpenAPI docs of each service, for the aggregated Swagger UI.
+        - id: user-service-docs
+          uri: ${orgportal.services.user-url}
+          predicates:
+            - Path=/docs/user-service
+          filters:
+            - SetPath=/v3/api-docs
+        - id: event-service-docs
+          uri: ${orgportal.services.event-url}
+          predicates:
+            - Path=/docs/event-service
+          filters:
+            - SetPath=/v3/api-docs
+        - id: task-service-docs
+          uri: ${orgportal.services.task-url}
+          predicates:
+            - Path=/docs/task-service
+          filters:
+            - SetPath=/v3/api-docs
+        - id: content-service-docs
+          uri: ${orgportal.services.content-url}
+          predicates:
+            - Path=/docs/content-service
+          filters:
+            - SetPath=/v3/api-docs
+        - id: notification-service-docs
+          uri: ${orgportal.services.notification-url}
+          predicates:
+            - Path=/docs/notification-service
+          filters:
+            - SetPath=/v3/api-docs
+        - id: reporting-service-docs
+          uri: ${orgportal.services.reporting-url}
+          predicates:
+            - Path=/docs/reporting-service
+          filters:
+            - SetPath=/v3/api-docs
+        - id: ai-service-docs
+          uri: ${orgportal.services.ai-url}
+          predicates:
+            - Path=/docs/ai-service
+          filters:
+            - SetPath=/v3/api-docs
+
+gateway:
+  public-paths:
+    - /api/auth/register
+    - /api/auth/login
+    - /actuator/health
+    - /actuator/health/**
+    - /swagger-ui.html
+    - /swagger-ui/**
+    - /webjars/**
+    - /v3/api-docs/**
+    - /docs/**
+  allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173,http://localhost:3000}
+
+springdoc:
+  swagger-ui:
+    urls:
+      - name: user-service
+        url: /docs/user-service
+      - name: event-service
+        url: /docs/event-service
+      - name: task-service
+        url: /docs/task-service
+      - name: content-service
+        url: /docs/content-service
+      - name: notification-service
+        url: /docs/notification-service
+      - name: reporting-service
+        url: /docs/reporting-service
+      - name: ai-service
+        url: /docs/ai-service

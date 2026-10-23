@@ -4,7 +4,8 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-SERVICES=(user-service event-service task-service content-service notification-service reporting-service ai-service gateway)
+# ai-service is left out until PB-18/PB-19 are committed; add it back before gateway when it is.
+SERVICES=(user-service event-service task-service content-service notification-service reporting-service gateway)
 ENV_FILE="${ENV_FILE:-.env}"
 
 if [[ ! -f "$ENV_FILE" ]]; then

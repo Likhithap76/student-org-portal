@@ -1,0 +1,10 @@
+# Shared settings (datasource, JPA, JWT, actuator, logging) come from common's orgportal-defaults.yml.
+server:
+  port: ${SERVER_PORT:8086}
+
+spring:
+  application:
+    name: reporting-service
+  profiles:
+    # "local" = shared file-based H2 until Supabase is ready. Use SPRING_PROFILES_ACTIVE=supabase for Supabase.
+    default: local

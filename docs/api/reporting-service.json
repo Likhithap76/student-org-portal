@@ -1,0 +1,219 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Org Portal - reporting-service",
+    "version" : "v1"
+  },
+  "servers" : [ {
+    "url" : "http://localhost:8080/api"
+  } ],
+  "security" : [ {
+    "bearerAuth" : [ ]
+  } ],
+  "paths" : {
+    "/reports/summary" : {
+      "get" : {
+        "tags" : [ "report-controller" ],
+        "summary" : "Totals: active members, pending applications, upcoming events, open and overdue tasks (OFFICER_ADMIN)",
+        "operationId" : "summary",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SummaryResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/reports/engagement" : {
+      "get" : {
+        "tags" : [ "report-controller" ],
+        "summary" : "FR-07: events attended and tasks completed per member (OFFICER_ADMIN). Dates inclusive; default last 30 days",
+        "operationId" : "engagement",
+        "parameters" : [ {
+          "name" : "from",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "to",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "includeInactive",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "boolean",
+            "default" : false
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/EngagementReport"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/reports/engagement.csv" : {
+      "get" : {
+        "tags" : [ "report-controller" ],
+        "summary" : "FR-07 engagement report as a CSV download (OFFICER_ADMIN)",
+        "operationId" : "engagementCsv",
+        "parameters" : [ {
+          "name" : "from",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "to",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "includeInactive",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "boolean",
+            "default" : false
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "SummaryResponse" : {
+        "type" : "object",
+        "properties" : {
+          "activeMembers" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "pendingApplications" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "upcomingEvents" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "openTasks" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "overdueTasks" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "generatedAt" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
+        }
+      },
+      "EngagementReport" : {
+        "type" : "object",
+        "properties" : {
+          "from" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "to" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "includeInactive" : {
+            "type" : "boolean"
+          },
+          "generatedAt" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "rows" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/EngagementRow"
+            }
+          }
+        }
+      },
+      "EngagementRow" : {
+        "type" : "object",
+        "properties" : {
+          "userId" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "displayName" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          },
+          "role" : {
+            "type" : "string",
+            "enum" : [ "MEMBER", "OFFICER_ADMIN" ]
+          },
+          "status" : {
+            "type" : "string",
+            "enum" : [ "PENDING", "ACTIVE", "INACTIVE" ]
+          },
+          "eventsAttended" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "tasksCompleted" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "bearerAuth" : {
+        "type" : "http",
+        "scheme" : "bearer",
+        "bearerFormat" : "JWT"
+      }
+    }
+  }
+}

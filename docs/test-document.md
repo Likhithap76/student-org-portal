@@ -4,7 +4,7 @@ As of 30 Oct 2026
 
 ## Purpose and scope
 
-The backend passes 518 automated tests, and 52 of 60 manual test cases passed against the real Supabase database on 22 Oct 2026; 8 cases are still to be tested.
+The backend passes 518 automated tests, and 52 of 60 manual test cases passed against the real Supabase database; 8 cases are still to be tested.
 
 This document covers the backend of the Student Organization Operations Portal only: the gateway and the seven services (user, event, task, content, notification, reporting, ai). The frontend is out of scope. The AI feature's backend (endpoint, request log, name matching, task creation) is built as a template; the real LLM client is built by the AI teammate, so the AI cases are still to be tested.
 

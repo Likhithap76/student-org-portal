@@ -1,0 +1,33 @@
+name: backend-ci
+
+on:
+  push:
+    branches: [main, develop]
+    paths: ['backend/**', '.github/workflows/backend-ci.yml']
+  pull_request:
+    branches: [main, develop]
+    paths: ['backend/**', '.github/workflows/backend-ci.yml']
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      # Tests use H2 and test-only secrets from the "test" profile; no Supabase access is needed.
+      - name: Build, test and check coverage
+        run: ./backend/mvnw -B -f backend/pom.xml verify
+
+      - name: Upload JaCoCo reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-reports
+          path: backend/*/target/site/jacoco/
+          if-no-files-found: ignore

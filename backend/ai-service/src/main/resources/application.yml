@@ -1,0 +1,18 @@
+# Shared settings (datasource, JPA, JWT, actuator, logging) come from common's orgportal-defaults.yml.
+server:
+  port: ${SERVER_PORT:8087}
+
+spring:
+  application:
+    name: ai-service
+  profiles:
+    # "local" = shared file-based H2 until Supabase is ready. Use SPRING_PROFILES_ACTIVE=supabase for Supabase.
+    default: local
+
+# LLM settings for the real client (HttpLlmClient, implemented by the AI teammate).
+orgportal:
+  ai:
+    base-url: ${LLM_BASE_URL:}
+    model: ${LLM_MODEL:}
+    api-key: ${LLM_API_KEY:}
+    timeout: 30s

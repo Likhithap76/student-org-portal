@@ -26,8 +26,7 @@
         <module>content-service</module>
         <module>notification-service</module>
         <module>reporting-service</module>
-        <!-- ai-service: re-enable when PB-18/PB-19 are committed (the folder is not in git yet). -->
-        <!-- <module>ai-service</module> -->
+        <module>ai-service</module>
     </modules>
 
     <properties>

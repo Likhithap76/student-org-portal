@@ -1,0 +1,107 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Org Portal - ai-service",
+    "version" : "v1"
+  },
+  "servers" : [ {
+    "url" : "http://localhost:8080/api"
+  } ],
+  "security" : [ {
+    "bearerAuth" : [ ]
+  } ],
+  "paths" : {
+    "/ai/summaries" : {
+      "post" : {
+        "tags" : [ "ai-summary-controller" ],
+        "summary" : "Summarize meeting notes into a summary, decisions and suggested tasks (OFFICER_ADMIN). Nothing is saved",
+        "operationId" : "summarize",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/SummaryRequest"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SummaryResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "SummaryRequest" : {
+        "required" : [ "text" ],
+        "type" : "object",
+        "properties" : {
+          "text" : {
+            "type" : "string"
+          },
+          "committeeId" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }
+      },
+      "ActionItemResponse" : {
+        "type" : "object",
+        "properties" : {
+          "description" : {
+            "type" : "string"
+          },
+          "assigneeName" : {
+            "type" : "string"
+          },
+          "suggestedUserId" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "dueDate" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }
+      },
+      "SummaryResponse" : {
+        "type" : "object",
+        "properties" : {
+          "summary" : {
+            "type" : "string"
+          },
+          "decisions" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "actionItems" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ActionItemResponse"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "bearerAuth" : {
+        "type" : "http",
+        "scheme" : "bearer",
+        "bearerFormat" : "JWT"
+      }
+    }
+  }
+}

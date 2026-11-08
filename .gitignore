@@ -1,0 +1,12 @@
+
+# macOS
+.DS_Store
+
+# Frontend generated files
+frontend/node_modules/
+frontend/dist/
+
+# Local environment secrets
+.env
+.env.*
+!.env.example

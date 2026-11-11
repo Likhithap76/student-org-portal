@@ -4,7 +4,7 @@ As of 11 Nov 2026
 
 ## Purpose and scope
 
-The backend passes 529 automated tests, and all 60 manual test cases passed against the real Supabase database.
+The backend passes 525 automated tests, and all 60 manual test cases passed against the real Supabase database.
 
 This document covers the backend of the Student Organization Operations Portal only: the gateway and the seven services (user, event, task, content, notification, reporting, ai). The frontend is out of scope. The AI summary uses a local Ollama model (llama3.2:3b); its output quality is evaluated separately in `docs/AI_FEATURE_EVALUATION.md`.
 
@@ -117,7 +117,7 @@ All 60 cases passed (last run 11 Nov 2026).
 
 ## Automated test summary
 
-All 529 automated tests pass, and every service and controller package is at 100% line coverage (gate: 70%).
+All 525 automated tests pass, and every service and controller package is at 100% line coverage (gate: 70%).
 
 | Module | Tests | Line coverage, whole module |
 | --- | --- | --- |
@@ -126,10 +126,10 @@ All 529 automated tests pass, and every service and controller package is at 100
 | common (shared library) | 75 | 93% |
 | event-service | 74 | 99% |
 | content-service | 49 | 97% |
-| ai-service | 47 | 90% |
+| ai-service | 43 | 90% |
 | reporting-service | 33 | 72% |
 | notification-service | 24 | 96% |
 | gateway | 19 | 92% |
-| **Total** | **529** | |
+| **Total** | **525** | |
 
 reporting-service is lower overall because its SQL has no automated database test; it was verified manually on Supabase (RP-01 to RP-03).

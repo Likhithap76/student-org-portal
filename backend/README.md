@@ -2,7 +2,7 @@
 
 The backend for the Student Organization Operations Portal. It handles membership,
 roles, events and RSVPs, committees and tasks, announcements and documents, in-app notifications, reports,
-and an AI meeting-notes summary.
+and an AI meeting-notes summary (using a local Ollama model).
 
 It is built as **Spring Boot microservices**. The frontend talks only to the **gateway**, which checks the
 login token and forwards each request to the right service.
@@ -31,6 +31,7 @@ Frontend ──► Gateway :8080 ──► user-service :8081
 | API docs | springdoc-openapi (Swagger UI) |
 | Boilerplate | Lombok |
 | Tests | JUnit 5, Mockito, MockMvc, JaCoCo (coverage) |
+| AI model | Ollama (llama3.2:3b), called from ai-service |
 | CI | GitHub Actions |
 
 ## Project structure
@@ -69,9 +70,20 @@ To use Supabase:
 2. `DB_URL` must end with `?sslmode=require&stringtype=unspecified` and be wrapped in single quotes.
 3. Start with `SPRING_PROFILES_ACTIVE=supabase ./run-all.sh`.
 
+**AI summary (optional):** the meeting-notes summary uses a local Ollama model.
+1. Install Ollama, then run `ollama pull llama3.2:3b`.
+2. In `.env`, set `LLM_BASE_URL=http://localhost:11434` and `LLM_MODEL=llama3.2:3b`.
+
+Without these, everything else works and `POST /api/ai/summaries` returns 503.
+
+`POST /api/ai/summaries` (officer_admin only) takes `{"text": "...", "committeeId": 5}` (notes up to
+5,000 characters; `committeeId` optional) and returns a summary, decisions and suggested action items.
+Assignee names are matched to committee members. Nothing is saved, and the notes are never logged; each
+call adds one row to `ai_request_log` (who, when, input length, outcome, latency).
+
 ## Run
 ```bash
-./run-all.sh    # build and start all services (logs in backend/logs/)
+./run-all.sh    # build, then start each service and wait until it is healthy (logs in backend/logs/)
 ./stop-all.sh   # stop them
 ```
 

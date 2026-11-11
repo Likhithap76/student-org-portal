@@ -35,16 +35,50 @@ mkdir -p logs
 echo "Building (tests skipped)..."
 ./mvnw -q -B -DskipTests package
 
-for svc in "${SERVICES[@]}"; do
+
+# Start services one at a time and wait for each to become healthy.
+PORTS=(8081 8082 8083 8084 8085 8086 8087 8080)
+
+for i in "${!SERVICES[@]}"; do
+  svc="${SERVICES[$i]}"
+  port="${PORTS[$i]}"
   pid_file="logs/$svc.pid"
+
   if [[ -f "$pid_file" ]] && kill -0 "$(cat "$pid_file")" 2>/dev/null; then
-    echo "$svc is already running (pid $(cat "$pid_file"))"
-    continue
+    pid=$(cat "$pid_file")
+    echo "$svc already running (pid $pid)"
+  else
+    jar=$(ls "$svc"/target/"$svc"-*.jar | head -n 1)
+    nohup java -jar "$jar" > "logs/$svc.log" 2>&1 &
+    pid=$!
+    echo "$pid" > "$pid_file"
+    echo "Starting $svc on port $port (pid $pid)..."
   fi
-  jar=$(ls "$svc"/target/"$svc"-*.jar | head -n 1)
-  nohup java -jar "$jar" > "logs/$svc.log" 2>&1 &
-  echo $! > "$pid_file"
-  echo "Started $svc (pid $!), log: logs/$svc.log"
+
+  ready=false
+
+  for ((attempt=1; attempt<=90; attempt++)); do
+    if ! kill -0 "$pid" 2>/dev/null; then
+      echo "ERROR: $svc exited. Check logs/$svc.log" >&2
+      exit 1
+    fi
+
+    if curl -fsS --max-time 2 \
+      "http://localhost:$port/actuator/health" 2>/dev/null \
+      | grep -Eq '"status"[[:space:]]*:[[:space:]]*"UP"'; then
+      ready=true
+      break
+    fi
+
+    sleep 2
+  done
+
+  if [[ "$ready" != true ]]; then
+    echo "ERROR: $svc did not become healthy. Check logs/$svc.log" >&2
+    exit 1
+  fi
+
+  echo "$svc is healthy."
 done
 
 echo

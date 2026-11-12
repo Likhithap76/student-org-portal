@@ -224,6 +224,9 @@ function Tasks({user}:{user:User}){
  const [selectedCommittee,setSelectedCommittee]=useState('');
  const [memberUserId,setMemberUserId]=useState('');
  const [committeeDetail,setCommitteeDetail]=useState<CommitteeDetail|null>(null);
+ const [myCommittees, setMyCommittees] = useState<Committee[]>([]);
+ const [myCommitteesLoading, setMyCommitteesLoading] = useState(false);
+ const [myCommitteesError, setMyCommitteesError] = useState('');
  const [busy,setBusy]=useState(false);
 
  async function load(){
@@ -238,6 +241,47 @@ function Tasks({user}:{user:User}){
  }
 
  useEffect(()=>{void load();},[]);
+ useEffect(() => {
+  if (isOfficer(user) || committees.length === 0) return;
+
+  let cancelled = false;
+
+  async function loadMyCommittees() {
+    setMyCommitteesLoading(true);
+    setMyCommitteesError('');
+
+    const results = await Promise.allSettled(
+      committees.map(c =>
+        api<CommitteeDetail>(`/committees/${c.id}`)
+      )
+    );
+
+    if (cancelled) return;
+
+    const mine = committees.filter((_, index) => {
+      const result = results[index];
+
+      return result.status === 'fulfilled' &&
+        result.value.members.some(m => m.userId === user.id);
+    });
+
+    setMyCommittees(mine);
+
+    if (results.some(r => r.status === 'rejected')) {
+      setMyCommitteesError(
+        'Some committee details could not be loaded.'
+      );
+    }
+
+    setMyCommitteesLoading(false);
+  }
+
+  void loadMyCommittees();
+
+  return () => {
+    cancelled = true;
+  };
+}, [committees, user.id, user.role]);
 
  async function loadCommittee(id:string){
   setSelectedCommittee(id);
@@ -426,7 +470,38 @@ function Tasks({user}:{user:User}){
     </div>
    </Card>
   </>}
-
+  {!isOfficer(user) && (
+  <Card title="My committees">
+    {myCommitteesLoading ? (
+      <p className="muted">Loading your committees…</p>
+    ) : myCommitteesError ? (
+      <Alert message={myCommitteesError} />
+    ) : myCommittees.length === 0 ? (
+      <p className="empty">
+        You are not assigned to any committees yet.
+      </p>
+    ) : (
+      <div className="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Committee</th>
+              <th>Membership</th>
+            </tr>
+          </thead>
+          <tbody>
+            {myCommittees.map(c => (
+              <tr key={c.id}>
+                <td>{c.name}</td>
+                <td>Member</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )}
+  </Card>
+)}
   <Card title="My tasks">
    <div className="table-wrap">
     <table>

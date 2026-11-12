@@ -1,6 +1,5 @@
 import { FormEvent, useEffect, useState } from 'react';
-import { api, Application, isOfficer, list, LoginResponse, Page, post, put, patch, RosterEntry, setToken, User } from './api';
-
+import { api, Application, del, isOfficer, list, LoginResponse, Page, post, put, patch, RosterEntry, setToken, User } from './api';
 type Tab = 'overview' | 'members' | 'events' | 'tasks' | 'content' | 'notifications' | 'reports' | 'ai';
 type Event = {id:number;title:string;description?:string;location?:string;startsAt:string;endsAt:string;status:string;goingCount:number;myResponse?:string};
 type Task = {id:number;title:string;status:string;dueDate:string;assigneeId:number;committeeId:number;overdue?:boolean};
@@ -204,18 +203,267 @@ function AttendancePanel({eventId,startsAt}:{eventId:number;startsAt:string}){
  </div>;
 }
 
+
+type CommitteeDetail = Committee & {
+  members: { userId: number; displayName: string; addedAt: string }[];
+};
+
 function Tasks({user}:{user:User}){
- const [tasks,setTasks]=useState<Task[]>([]);const [committees,setCommittees]=useState<Committee[]>([]);const [error,setError]=useState('');const [message,setMessage]=useState('');
- const [committee,setCommittee]=useState('');const [title,setTitle]=useState('');const [assignee,setAssignee]=useState('');const [due,setDue]=useState('');const [newCommittee,setNewCommittee]=useState('');
- async function load(){try{const [t,c]=await Promise.all([api<Page<Task>>('/tasks/me?size=100'),api<Page<Committee>>('/committees?size=100')]);setTasks(list(t));setCommittees(list(c));}catch(e){setError(errorMessage(e));}}
+ const [tasks,setTasks]=useState<Task[]>([]);
+ const [committees,setCommittees]=useState<Committee[]>([]);
+ const [error,setError]=useState('');
+ const [message,setMessage]=useState('');
+
+ const [committee,setCommittee]=useState('');
+ const [title,setTitle]=useState('');
+ const [assignee,setAssignee]=useState('');
+ const [due,setDue]=useState('');
+ const [newCommittee,setNewCommittee]=useState('');
+
+ // Committee membership management
+ const [selectedCommittee,setSelectedCommittee]=useState('');
+ const [memberUserId,setMemberUserId]=useState('');
+ const [committeeDetail,setCommitteeDetail]=useState<CommitteeDetail|null>(null);
+ const [busy,setBusy]=useState(false);
+
+ async function load(){
+  try{
+   const [t,c]=await Promise.all([
+    api<Page<Task>>('/tasks/me?size=100'),
+    api<Page<Committee>>('/committees?size=100')
+   ]);
+   setTasks(list(t));
+   setCommittees(list(c));
+  }catch(e){setError(errorMessage(e));}
+ }
+
  useEffect(()=>{void load();},[]);
- async function createCommittee(e:FormEvent){e.preventDefault();setError('');try{await post('/committees',{name:newCommittee,description:'',kind:'COMMITTEE'});setMessage('Committee created.');setNewCommittee('');await load();}catch(e){setError(errorMessage(e));}}
- async function createTask(e:FormEvent){e.preventDefault();setError('');try{await post('/tasks',{title,committeeId:Number(committee),assigneeId:Number(assignee),dueDate:due});setMessage('Task created.');setTitle('');await load();}catch(e){setError(errorMessage(e));}}
- async function update(id:number,status:string){setError('');try{await patch(`/tasks/${id}/status`,{status});setMessage('Task status updated.');await load();}catch(e){setError(errorMessage(e));}}
- return <><div className="page-header"><div><h1>Committees & tasks</h1><p>Coordinate responsibilities and track progress.</p></div></div>{error&&<Alert message={error}/>}{message&&<Alert message={message} success/>}
- {isOfficer(user)&&<div className="tile-grid"><Card title="Create committee"><form className="stack" onSubmit={createCommittee}><label>Committee name<input required value={newCommittee} onChange={e=>setNewCommittee(e.target.value)}/></label><Button className="primary" type="submit">Create</Button></form></Card><Card title="Assign task"><form className="stack" onSubmit={createTask}><label>Task title<input required value={title} onChange={e=>setTitle(e.target.value)}/></label><label>Committee<select required value={committee} onChange={e=>setCommittee(e.target.value)}><option value="">Select</option>{committees.map(c=><option value={c.id} key={c.id}>{c.name}</option>)}</select></label><label>Assignee user ID<input type="number" min="1" required value={assignee} onChange={e=>setAssignee(e.target.value)}/></label><label>Due date<input type="date" required value={due} onChange={e=>setDue(e.target.value)}/></label><p className="muted">The assignee must already belong to the committee.</p><Button className="primary" type="submit">Assign</Button></form></Card></div>}
- <Card title="My tasks"><div className="table-wrap"><table><thead><tr><th>Task</th><th>Due</th><th>Status</th><th>Change status</th></tr></thead><tbody>{tasks.map(t=><tr key={t.id}><td>{t.title}</td><td>{t.dueDate||'—'} {t.overdue&&'⚠️'}</td><td>{t.status}</td><td>{(t.status==='TODO'||t.status==='IN_PROGRESS'||t.status==='DONE')&&<Button className="small" onClick={()=>update(t.id,t.status==='TODO'?'IN_PROGRESS':t.status==='IN_PROGRESS'?'DONE':'IN_PROGRESS')}>{t.status==='TODO'?'Start':t.status==='IN_PROGRESS'?'Complete':'Reopen'}</Button>}</td></tr>)}{!tasks.length&&<tr><td colSpan={4} className="empty">No tasks assigned.</td></tr>}</tbody></table></div></Card></>;
+
+ async function loadCommittee(id:string){
+  setSelectedCommittee(id);
+  setCommitteeDetail(null);
+  setError('');
+  if(!id)return;
+  try{
+   const detail=await api<CommitteeDetail>(`/committees/${id}`);
+   setCommitteeDetail(detail);
+  }catch(e){setError(errorMessage(e));}
+ }
+
+ async function createCommittee(e:FormEvent){
+  e.preventDefault();setError('');setMessage('');
+  try{
+   await post('/committees',{
+    name:newCommittee,description:'',kind:'COMMITTEE'
+   });
+   setMessage('Committee created.');
+   setNewCommittee('');
+   await load();
+  }catch(e){setError(errorMessage(e));}
+ }
+
+ async function addMember(e:FormEvent){
+  e.preventDefault();
+  if(!selectedCommittee||!memberUserId)return;
+  setBusy(true);setError('');setMessage('');
+  try{
+   await post(`/committees/${selectedCommittee}/members`,{
+    userIds:[Number(memberUserId)]
+   });
+   setMessage('Member added to committee.');
+   setMemberUserId('');
+   await load();
+   await loadCommittee(selectedCommittee);
+  }catch(e){setError(errorMessage(e));}
+  finally{setBusy(false);}
+ }
+
+ async function removeMember(userId:number){
+  if(!selectedCommittee)return;
+  setBusy(true);setError('');setMessage('');
+  try{
+   await del(`/committees/${selectedCommittee}/members/${userId}`);
+   setMessage('Member removed from committee.');
+   await load();
+   await loadCommittee(selectedCommittee);
+  }catch(e){setError(errorMessage(e));}
+  finally{setBusy(false);}
+ }
+
+ async function createTask(e:FormEvent){
+  e.preventDefault();setError('');setMessage('');
+  try{
+   await post('/tasks',{
+    title,
+    committeeId:Number(committee),
+    assigneeId:Number(assignee),
+    dueDate:due
+   });
+   setMessage('Task created.');
+   setTitle('');
+   await load();
+  }catch(e){setError(errorMessage(e));}
+ }
+
+ async function update(id:number,status:string){
+  setError('');
+  try{
+   await patch(`/tasks/${id}/status`,{status});
+   setMessage('Task status updated.');
+   await load();
+  }catch(e){setError(errorMessage(e));}
+ }
+
+ return <>
+  <div className="page-header">
+   <div>
+    <h1>Committees & tasks</h1>
+    <p>Coordinate responsibilities and track progress.</p>
+   </div>
+  </div>
+
+  {error&&<Alert message={error}/>}
+  {message&&<Alert message={message} success/>}
+
+  {isOfficer(user)&&<>
+   <div className="tile-grid">
+    <Card title="Create committee">
+     <form className="stack" onSubmit={createCommittee}>
+      <label>Committee name
+       <input required value={newCommittee}
+        onChange={e=>setNewCommittee(e.target.value)}/>
+      </label>
+      <Button className="primary" type="submit">Create</Button>
+     </form>
+    </Card>
+
+    <Card title="Assign task">
+     <form className="stack" onSubmit={createTask}>
+      <label>Task title
+       <input required value={title}
+        onChange={e=>setTitle(e.target.value)}/>
+      </label>
+      <label>Committee
+       <select required value={committee}
+        onChange={e=>setCommittee(e.target.value)}>
+        <option value="">Select</option>
+        {committees.map(c=>
+         <option value={c.id} key={c.id}>{c.name}</option>
+        )}
+       </select>
+      </label>
+      <label>Assignee user ID
+       <input type="number" min="1" required value={assignee}
+        onChange={e=>setAssignee(e.target.value)}/>
+      </label>
+      <label>Due date
+       <input type="date" required value={due}
+        onChange={e=>setDue(e.target.value)}/>
+      </label>
+      <p className="muted">
+       The assignee must already belong to the committee.
+      </p>
+      <Button className="primary" type="submit">Assign</Button>
+     </form>
+    </Card>
+   </div>
+
+   <Card title="Manage committee members">
+    <div className="stack">
+     <label>Select committee
+      <select value={selectedCommittee}
+       onChange={e=>void loadCommittee(e.target.value)}>
+       <option value="">Select a committee</option>
+       {committees.map(c=>
+        <option key={c.id} value={c.id}>
+         {c.name} ({c.memberCount} members)
+        </option>
+       )}
+      </select>
+     </label>
+
+     {selectedCommittee&&<>
+      <form className="stack" onSubmit={addMember}>
+       <label>Member user ID
+        <input type="number" min="1" required
+         value={memberUserId}
+         onChange={e=>setMemberUserId(e.target.value)}
+         placeholder="Enter an approved member's user ID"/>
+       </label>
+       <Button className="primary" type="submit" busy={busy}>
+        Add member
+       </Button>
+      </form>
+
+      <h3>Current committee members</h3>
+      {committeeDetail?(
+       committeeDetail.members.length?(
+        <div className="table-wrap">
+         <table>
+          <thead><tr>
+           <th>Member</th><th>User ID</th><th>Action</th>
+          </tr></thead>
+          <tbody>
+           {committeeDetail.members.map(m=>
+            <tr key={m.userId}>
+             <td>{m.displayName||'Member'}</td>
+             <td>{m.userId}</td>
+             <td>
+              <Button className="small" type="button"
+               disabled={busy}
+               onClick={()=>void removeMember(m.userId)}>
+               Remove
+              </Button>
+             </td>
+            </tr>
+           )}
+          </tbody>
+         </table>
+        </div>
+       ):<p className="empty">No members assigned yet.</p>
+      ):<p className="muted">Loading committee members…</p>}
+     </>}
+    </div>
+   </Card>
+  </>}
+
+  <Card title="My tasks">
+   <div className="table-wrap">
+    <table>
+     <thead><tr>
+      <th>Task</th><th>Due</th><th>Status</th>
+      <th>Change status</th>
+     </tr></thead>
+     <tbody>
+      {tasks.map(t=>
+       <tr key={t.id}>
+        <td>{t.title}</td>
+        <td>{t.dueDate||'—'} {t.overdue&&'⚠️'}</td>
+        <td>{t.status}</td>
+        <td>
+         {(t.status==='TODO'||t.status==='IN_PROGRESS'||t.status==='DONE')&&
+          <Button className="small"
+           onClick={()=>update(
+            t.id,
+            t.status==='TODO'?'IN_PROGRESS':
+            t.status==='IN_PROGRESS'?'DONE':'IN_PROGRESS'
+           )}>
+           {t.status==='TODO'?'Start':
+            t.status==='IN_PROGRESS'?'Complete':'Reopen'}
+          </Button>}
+        </td>
+       </tr>
+      )}
+      {!tasks.length&&<tr>
+       <td colSpan={4} className="empty">No tasks assigned.</td>
+      </tr>}
+     </tbody>
+    </table>
+   </div>
+  </Card>
+ </>;
 }
+
 
 function Content({user}:{user:User}){
  const [announcements,setAnnouncements]=useState<Announcement[]>([]);const [links,setLinks]=useState<DocumentLink[]>([]);const [error,setError]=useState('');const [message,setMessage]=useState('');

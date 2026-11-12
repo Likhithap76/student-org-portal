@@ -85,7 +85,123 @@ function Events({user}:{user:User}){
  async function rsvp(eventId:number,response:string){setError('');try{await put(`/events/${eventId}/rsvp`,{response});setMessage('RSVP saved.');await load();}catch(e){setError(errorMessage(e));}}
  return <><div className="page-header"><div><h1>Events</h1><p>Browse upcoming activities and update your RSVP.</p></div></div>{error&&<Alert message={error}/>}{message&&<Alert message={message} success/>}
  {isOfficer(user)&&<Card title="Schedule event"><form onSubmit={submit} className="form-grid"><label>Title<input required value={title} onChange={e=>setTitle(e.target.value)}/></label><label>Location<input value={location} onChange={e=>setLocation(e.target.value)}/></label><label>Starts<input type="datetime-local" required value={start} onChange={e=>setStart(e.target.value)}/></label><label>Ends<input type="datetime-local" required value={end} onChange={e=>setEnd(e.target.value)}/></label><Button className="primary" type="submit">Create event</Button></form></Card>}
- <div className="tile-grid">{items.map(item=><article className="card event-card" key={item.id}><span className="eyebrow">{item.status}</span><h2>{item.title}</h2><p>{formatDate(item.startsAt)}</p><p>{item.location||'Location pending'}</p><p>{item.goingCount||0} attending</p><div className="actions"><select aria-label={`RSVP for ${item.title}`} value={item.myResponse||''} onChange={e=>rsvp(item.id,e.target.value)}><option value="" disabled>Choose RSVP</option><option value="GOING">Going</option><option value="NOT_GOING">Not going</option></select></div></article>)}{!items.length&&<Card title="No events yet"><p>Events published by officers will appear here.</p></Card>}</div></>;
+ <div className="tile-grid">{items.map(item=><article className="card event-card" key={item.id}><span className="eyebrow">{item.status}</span><h2>{item.title}</h2><p>{formatDate(item.startsAt)}</p><p>{item.location||'Location pending'}</p><p>{item.goingCount||0} attending</p><div className="actions"><select aria-label={`RSVP for ${item.title}`} value={item.myResponse||''} onChange={e=>rsvp(item.id,e.target.value)}><option value="" disabled>Choose RSVP</option><option value="GOING">Going</option><option value="NOT_GOING">Not going</option></select></div>{isOfficer(user)&&<AttendancePanel eventId={item.id} startsAt={item.startsAt}/>}</article>)}{!items.length&&<Card title="No events yet"><p>Events published by officers will appear here.</p></Card>}</div></>;
+}
+
+
+type AttendanceStatus = 'PRESENT' | 'ABSENT';
+
+type AttendanceEntry = {
+  userId: number;
+  displayName: string;
+  status: AttendanceStatus;
+  recordedAt: string;
+};
+
+type AttendanceResponse = {
+  eventId: number;
+  entries: AttendanceEntry[];
+  presentCount: number;
+  goingCount: number;
+  rate: number | null;
+};
+
+function AttendancePanel({eventId,startsAt}:{eventId:number;startsAt:string}){
+ const [open,setOpen]=useState(false);
+ const [roster,setRoster]=useState<RosterEntry[]>([]);
+ const [records,setRecords]=useState<AttendanceEntry[]>([]);
+ const [memberId,setMemberId]=useState('');
+ const [status,setStatus]=useState<AttendanceStatus>('PRESENT');
+ const [loading,setLoading]=useState(false);
+ const [saving,setSaving]=useState(false);
+ const [error,setError]=useState('');
+ const [message,setMessage]=useState('');
+ const eventStarted=Date.parse(startsAt)<=Date.now();
+
+ async function refresh(){
+  const [members,attendance]=await Promise.all([
+   api<Page<RosterEntry>>('/users/roster?size=100'),
+   api<AttendanceResponse>(`/events/${eventId}/attendance`)
+  ]);
+  setRoster(list(members));
+  setRecords(attendance.entries||[]);
+ }
+
+ async function toggle(){
+  if(open){setOpen(false);return;}
+  setOpen(true);
+  setLoading(true);
+  setError('');
+  try{await refresh();}
+  catch(e){setError(errorMessage(e));}
+  finally{setLoading(false);}
+ }
+
+ async function save(e:FormEvent){
+  e.preventDefault();
+  if(!memberId||!eventStarted)return;
+  setSaving(true);
+  setError('');
+  setMessage('');
+  try{
+   await put<AttendanceResponse>(
+    `/events/${eventId}/attendance`,
+    [{userId:Number(memberId),status}]
+   );
+   await refresh();
+   setMessage('Attendance saved successfully.');
+  }catch(e){setError(errorMessage(e));}
+  finally{setSaving(false);}
+ }
+
+ return <div className="stack">
+  <Button type="button" onClick={()=>void toggle()}>
+   {open?'Hide attendance':'Manage attendance'}
+  </Button>
+  {open&&<>
+   <h3>Event attendance</h3>
+   {error&&<Alert message={error}/>}
+   {message&&<Alert message={message} success/>}
+   {loading?<p>Loading attendance...</p>:<>
+    {!eventStarted&&<p className="muted">Attendance can only be marked after the event starts.</p>}
+    <form className="stack" onSubmit={save}>
+     <label>Member
+      <select required value={memberId} onChange={e=>{
+       const id=e.target.value;
+       setMemberId(id);
+       setStatus(records.find(r=>r.userId===Number(id))?.status||'PRESENT');
+      }}>
+       <option value="">Select member</option>
+       {roster.map(m=><option key={m.id} value={m.id}>{m.displayName}</option>)}
+      </select>
+     </label>
+     <label>Attendance status
+      <select value={status} onChange={e=>setStatus(e.target.value as AttendanceStatus)}>
+       <option value="PRESENT">Present</option>
+       <option value="ABSENT">Absent</option>
+      </select>
+     </label>
+     <Button className="primary" type="submit" busy={saving}
+      disabled={!eventStarted||!memberId}>
+      Save attendance
+     </Button>
+    </form>
+    <h3>Saved attendance records</h3>
+    <div className="table-wrap">
+     <table>
+      <thead><tr><th>Member</th><th>Status</th></tr></thead>
+      <tbody>
+       {records.map(r=><tr key={r.userId}>
+        <td>{r.displayName||`User ${r.userId}`}</td>
+        <td>{r.status==='PRESENT'?'Present':'Absent'}</td>
+       </tr>)}
+       {!records.length&&<tr><td colSpan={2}>No attendance recorded yet.</td></tr>}
+      </tbody>
+     </table>
+    </div>
+   </>}
+  </>}
+ </div>;
 }
 
 function Tasks({user}:{user:User}){

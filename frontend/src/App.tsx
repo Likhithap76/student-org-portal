@@ -213,12 +213,13 @@ function EventRsvpPanel({eventId}:{eventId:number}){
   return (
     <div className="stack">
       <Button
-        type="button"
-        className="small"
-        onClick={toggle}
-      >
-        {open?'Hide RSVPs':'View RSVPs'}
-      </Button>
+  type="button"
+  className="small"
+  style={{marginBottom:'10px'}}
+  onClick={toggle}
+>
+  {open?'Hide RSVPs':'View RSVPs'}
+</Button>
 
       {open&&(
         <div className="stack">
@@ -506,9 +507,17 @@ function Events({user}:{user:User}){
               />
             </label>
 
-            <Button className="primary" type="submit">
-              Create event
-            </Button>
+            <div
+  style={{
+    gridColumn:'1 / -1',
+    display:'flex',
+    justifyContent:'flex-end'
+  }}
+>
+  <Button className="primary" type="submit">
+    Create event
+  </Button>
+</div>
           </form>
         </Card>
       )}
@@ -733,7 +742,7 @@ function AttendancePanel({eventId,startsAt}:{eventId:number;startsAt:string}){
  }
 
  return <div className="stack">
-  <Button type="button" onClick={()=>void toggle()}>
+  <Button type="button" className="primary" onClick={()=>void toggle()}>
    {open?'Hide attendance':'Manage attendance'}
   </Button>
   {open&&<>
@@ -790,6 +799,7 @@ type CommitteeDetail = Committee & {
 function Tasks({user}:{user:User}){
  const [tasks,setTasks]=useState<Task[]>([]);
  const [committees,setCommittees]=useState<Committee[]>([]);
+ const [availableUsers,setAvailableUsers]=useState<RosterEntry[]>([]);
  const [error,setError]=useState('');
  const [message,setMessage]=useState('');
 
@@ -813,14 +823,22 @@ function Tasks({user}:{user:User}){
 
  async function load(){
   try{
-   const [t,c]=await Promise.all([
-    api<Page<Task>>('/tasks/me?size=100'),
-    api<Page<Committee>>('/committees?size=100')
-   ]);
-   setTasks(list(t));
-   setCommittees(list(c));
-  }catch(e){setError(errorMessage(e));}
- }
+    const [t,c]=await Promise.all([
+      api<Page<Task>>('/tasks/me?size=100'),
+      api<Page<Committee>>('/committees?size=100')
+    ]);
+
+    setTasks(list(t));
+    setCommittees(list(c));
+
+    if(isOfficer(user)){
+      const users=await api<Page<RosterEntry>>('/users/roster?size=100');
+      setAvailableUsers(list(users));
+    }
+  }catch(e){
+    setError(errorMessage(e));
+  }
+}
 
  useEffect(()=>{void load();},[]);
  useEffect(() => {
@@ -866,6 +884,7 @@ function Tasks({user}:{user:User}){
 }, [committees, user.id, user.role]);
 
  async function loadCommittee(id:string){
+  setMemberUserId('');
   setSelectedCommittee(id);
   setCommitteeDetail(null);
   setError('');
@@ -891,6 +910,14 @@ function Tasks({user}:{user:User}){
  async function addMember(e:FormEvent){
   e.preventDefault();
   if(!selectedCommittee||!memberUserId)return;
+  if(
+  committeeDetail?.members.some(
+    member => member.userId === Number(memberUserId)
+  )
+){
+  setError('This user is already a member of the selected committee.');
+  return;
+}
   setBusy(true);setError('');setMessage('');
   try{
    await post(`/committees/${selectedCommittee}/members`,{
@@ -1032,7 +1059,7 @@ function Tasks({user}:{user:User}){
 
   {assigneeMembers.map(member=>(
    <option key={member.userId} value={member.userId}>
-    {`User ${member.userId}`}
+    {member.displayName || `User ${member.userId}`}
    </option>
   ))}
  </select>
@@ -1051,63 +1078,102 @@ function Tasks({user}:{user:User}){
     </Card>
    </div>
 
-   <Card title="Manage committee members">
-    <div className="stack">
-     <label>Select committee
-      <select value={selectedCommittee}
-       onChange={e=>void loadCommittee(e.target.value)}>
-       <option value="">Select a committee</option>
-       {committees.map(c=>
-        <option key={c.id} value={c.id}>
-         {c.name} ({c.memberCount} members)
-        </option>
-       )}
+   
+<Card title="Manage committee members">
+  <div className="stack">
+    <label>
+      Select committee
+      <select
+        value={selectedCommittee}
+        onChange={e=>void loadCommittee(e.target.value)}
+      >
+        <option value="">Select a committee</option>
+        {committees.map(c=>(
+          <option key={c.id} value={c.id}>
+            {c.name} ({c.memberCount} members)
+          </option>
+        ))}
       </select>
-     </label>
+    </label>
 
-     {selectedCommittee&&<>
-      <form className="stack" onSubmit={addMember}>
-       <label>Member user ID
-        <input type="number" min="1" required
-         value={memberUserId}
-         onChange={e=>setMemberUserId(e.target.value)}
-         placeholder="Enter an approved member's user ID"/>
-       </label>
-       <Button className="primary" type="submit" busy={busy}>
-        Add member
-       </Button>
-      </form>
+    {selectedCommittee&&(
+      <>
+        <form className="stack" onSubmit={addMember}>
+          <label>
+            Select member to add
+            <select
+              required
+              value={memberUserId}
+              onChange={e=>setMemberUserId(e.target.value)}
+            >
+              <option value="">Select an active user</option>
 
-      <h3>Current committee members</h3>
-      {committeeDetail?(
-       committeeDetail.members.length?(
-        <div className="table-wrap">
-         <table>
-          <thead><tr>
-           <th>Member</th><th>User ID</th><th>Action</th>
-          </tr></thead>
-          <tbody>
-           {committeeDetail.members.map(m=>
-            <tr key={m.userId}>
-             <td>{m.displayName||'Member'}</td>
-             <td>{m.userId}</td>
-             <td>
-              <Button className="small" type="button"
-               disabled={busy}
-               onClick={()=>void removeMember(m.userId)}>
-               Remove
-              </Button>
-             </td>
-            </tr>
-           )}
-          </tbody>
-         </table>
-        </div>
-       ):<p className="empty">No members assigned yet.</p>
-      ):<p className="muted">Loading committee members…</p>}
-     </>}
-    </div>
-   </Card>
+              {availableUsers
+                .filter(m=>!committeeDetail?.members.some(
+                  existing=>existing.userId===m.id
+                ))
+                .map(m=>(
+                  <option key={m.id} value={m.id}>
+                    {m.displayName} (ID: {m.id})
+                  </option>
+                ))}
+            </select>
+          </label>
+
+          <Button
+            className="primary"
+            type="submit"
+            busy={busy}
+            disabled={!memberUserId||!committeeDetail}
+          >
+            Add member
+          </Button>
+        </form>
+
+        <h3>Current committee members</h3>
+
+        {committeeDetail?(
+          committeeDetail.members.length?(
+            <div className="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Member</th>
+                    <th>User ID</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {committeeDetail.members.map(m=>(
+                    <tr key={m.userId}>
+                      <td>{m.displayName||'Member'}</td>
+                      <td>{m.userId}</td>
+                      <td>
+                        <Button
+                          className="small"
+                          type="button"
+                          disabled={busy}
+                          onClick={()=>void removeMember(m.userId)}
+                        >
+                          Remove
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ):(
+            <p className="empty">No members assigned yet.</p>
+          )
+        ):(
+          <p className="muted">Loading committee members…</p>
+        )}
+      </>
+    )}
+  </div>
+</Card>
+
   </>}
   {!isOfficer(user) && (
   <Card title="My committees">

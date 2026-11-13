@@ -1,0 +1,26 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.3.13)
+
+2026-11-12T22:11:50.082-06:00  INFO [] 3682 --- [reporting-service] [           main] c.s.p.r.ReportingServiceApplication      : Starting ReportingServiceApplication v0.1.0-SNAPSHOT using Java 21.0.13 with PID 3682 (/Users/devarsh/Documents/Codex/2026-11-12/https-github-com-likhithap76-student-org/work/student-org-portal/backend/reporting-service/target/reporting-service-0.1.0-SNAPSHOT.jar started by devarsh in /Users/devarsh/Documents/Codex/2026-11-12/https-github-com-likhithap76-student-org/work/student-org-portal/backend)
+2026-11-12T22:11:50.084-06:00  INFO [] 3682 --- [reporting-service] [           main] c.s.p.r.ReportingServiceApplication      : The following 1 profile is active: "local"
+2026-11-12T22:11:50.714-06:00  INFO [] 3682 --- [reporting-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8086 (http)
+2026-11-12T22:11:50.720-06:00  INFO [] 3682 --- [reporting-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-12T22:11:50.721-06:00  INFO [] 3682 --- [reporting-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2026-11-12T22:11:50.734-06:00  INFO [] 3682 --- [reporting-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-11-12T22:11:50.734-06:00  INFO [] 3682 --- [reporting-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 630 ms
+2026-11-12T22:11:51.160-06:00  INFO [] 3682 --- [reporting-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-11-12T22:11:51.286-06:00  INFO [] 3682 --- [reporting-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8086 (http) with context path '/'
+2026-11-12T22:11:51.293-06:00  INFO [] 3682 --- [reporting-service] [           main] c.s.p.r.ReportingServiceApplication      : Started ReportingServiceApplication in 1.402 seconds (process running for 1.621)
+2026-11-12T22:11:51.705-06:00  INFO [] 3682 --- [reporting-service] [nio-8086-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-12T22:11:51.705-06:00  INFO [] 3682 --- [reporting-service] [nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-12T22:11:51.706-06:00  INFO [] 3682 --- [reporting-service] [nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-11-12T22:11:51.734-06:00  INFO [1ac9aee5-b326-4aad-b68f-47c67bcabeb9] 3682 --- [reporting-service] [nio-8086-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-12T22:11:51.795-06:00  INFO [1ac9aee5-b326-4aad-b68f-47c67bcabeb9] 3682 --- [reporting-service] [nio-8086-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:/Users/devarsh/Documents/Codex/2026-11-12/https-github-com-likhithap76-student-org/work/regression/data/orgportal user=SA
+2026-11-12T22:11:51.797-06:00  INFO [1ac9aee5-b326-4aad-b68f-47c67bcabeb9] 3682 --- [reporting-service] [nio-8086-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.

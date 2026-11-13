@@ -1,0 +1,50 @@
+[
+  {
+    "id": "UI-01",
+    "status": "PASS",
+    "check": "Officer login, reports populated, CSV download triggered"
+  },
+  {
+    "id": "UI-02",
+    "status": "PASS",
+    "check": "Committee addition persisted after reload and fresh sign-in"
+  },
+  {
+    "id": "UI-03",
+    "status": "PASS",
+    "check": "Committee removal updates the roster"
+  },
+  {
+    "id": "UI-04",
+    "status": "PASS",
+    "check": "AI unavailable error displayed readably"
+  },
+  {
+    "id": "UI-05",
+    "status": "FAIL",
+    "check": "390px officer membership layout",
+    "detail": "document scrollWidth 1575px at viewport width 390px"
+  },
+  {
+    "id": "UI-06",
+    "status": "FAIL",
+    "check": "390px member event layout",
+    "detail": "document scrollWidth 1258px at viewport width 390px"
+  },
+  {
+    "id": "UI-07",
+    "status": "PASS",
+    "check": "Member task Start Complete Reopen transitions"
+  },
+  {
+    "id": "UI-08",
+    "status": "FAIL",
+    "check": "390px member task layout",
+    "detail": "document scrollWidth 1258px at viewport width 390px"
+  },
+  {
+    "id": "UI-09",
+    "status": "PASS",
+    "check": "Member announcement and resource visibility; notifications marked read; officer navigation absent"
+  }
+]

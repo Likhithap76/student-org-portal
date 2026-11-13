@@ -1,0 +1,538 @@
+[
+  {
+    "module": "ai-service",
+    "name": "com.studentorgs.portal.ai.client.HttpLlmClientTest",
+    "tests": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "ai-service",
+    "name": "com.studentorgs.portal.ai.AiFlowIntegrationTest",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "ai-service",
+    "name": "com.studentorgs.portal.ai.AiServiceApplicationTests",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "ai-service",
+    "name": "com.studentorgs.portal.ai.service.AiSummaryServiceTest",
+    "tests": 12,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "ai-service",
+    "name": "com.studentorgs.portal.ai.controller.AiSummaryControllerTest",
+    "tests": 7,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "ai-service",
+    "name": "com.studentorgs.portal.ai.service.AssigneeMatcherTest",
+    "tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "ai-service",
+    "name": "com.studentorgs.portal.ai.client.TaskDirectoryClientTest",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "notification-service",
+    "name": "com.studentorgs.portal.notification.NotificationFlowIntegrationTest",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "notification-service",
+    "name": "com.studentorgs.portal.notification.NotificationServiceApplicationTests",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "notification-service",
+    "name": "com.studentorgs.portal.notification.service.NotificationServiceTest",
+    "tests": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "notification-service",
+    "name": "com.studentorgs.portal.notification.controller.NotificationControllerTest",
+    "tests": 11,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "task-service",
+    "name": "com.studentorgs.portal.task.TaskFlowIntegrationTest",
+    "tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "task-service",
+    "name": "com.studentorgs.portal.task.controller.CommitteeControllerTest",
+    "tests": 13,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "task-service",
+    "name": "com.studentorgs.portal.task.domain.TaskTest",
+    "tests": 11,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "task-service",
+    "name": "com.studentorgs.portal.task.controller.InternalCommitteeControllerTest",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "task-service",
+    "name": "com.studentorgs.portal.task.TaskServiceApplicationTests",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "task-service",
+    "name": "com.studentorgs.portal.task.service.TaskServiceTest",
+    "tests": 19,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "task-service",
+    "name": "com.studentorgs.portal.task.service.TaskAssignedNotifierTest",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "task-service",
+    "name": "com.studentorgs.portal.task.service.CommitteeServiceTest",
+    "tests": 11,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "task-service",
+    "name": "com.studentorgs.portal.task.controller.TaskControllerTest",
+    "tests": 20,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "event-service",
+    "name": "com.studentorgs.portal.event.controller.RsvpControllerTest",
+    "tests": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "event-service",
+    "name": "com.studentorgs.portal.event.service.RsvpServiceTest",
+    "tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "event-service",
+    "name": "com.studentorgs.portal.event.EventFlowIntegrationTest",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "event-service",
+    "name": "com.studentorgs.portal.event.EventServiceApplicationTests",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "event-service",
+    "name": "com.studentorgs.portal.event.controller.AttendanceControllerTest",
+    "tests": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "event-service",
+    "name": "com.studentorgs.portal.event.domain.EventTest",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "event-service",
+    "name": "com.studentorgs.portal.event.service.EventServiceTest",
+    "tests": 18,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "event-service",
+    "name": "com.studentorgs.portal.event.service.AttendanceServiceTest",
+    "tests": 9,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "event-service",
+    "name": "com.studentorgs.portal.event.controller.EventControllerTest",
+    "tests": 13,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "common",
+    "name": "com.studentorgs.portal.common.config.OrgPortalDefaultsEnvironmentPostProcessorTest",
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "common",
+    "name": "com.studentorgs.portal.common.security.JwtServiceTest",
+    "tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "common",
+    "name": "com.studentorgs.portal.common.client.NotificationClientTest",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "common",
+    "name": "com.studentorgs.portal.common.client.UserDirectoryClientTest",
+    "tests": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "common",
+    "name": "com.studentorgs.portal.common.audit.AuditWriterTest",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "common",
+    "name": "com.studentorgs.portal.common.paging.PageRequestsTest",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "common",
+    "name": "com.studentorgs.portal.common.security.CurrentUserTest",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "common",
+    "name": "com.studentorgs.portal.common.security.SecurityWebMvcTest",
+    "tests": 9,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "common",
+    "name": "com.studentorgs.portal.common.error.GlobalExceptionHandlerWebMvcTest",
+    "tests": 16,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "common",
+    "name": "com.studentorgs.portal.common.client.InternalRestClientFactoryTest",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "common",
+    "name": "com.studentorgs.portal.common.security.RoleTest",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "common",
+    "name": "com.studentorgs.portal.common.persistence.LowercaseEnumConverterTest",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "common",
+    "name": "com.studentorgs.portal.common.security.MemberGuardTest",
+    "tests": 9,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "reporting-service",
+    "name": "com.studentorgs.portal.reporting.controller.ReportControllerTest",
+    "tests": 11,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "reporting-service",
+    "name": "com.studentorgs.portal.reporting.service.ReportServiceTest",
+    "tests": 12,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "reporting-service",
+    "name": "com.studentorgs.portal.reporting.ReportingServiceApplicationTests",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "reporting-service",
+    "name": "com.studentorgs.portal.reporting.service.CsvWriterTest",
+    "tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "user-service",
+    "name": "com.studentorgs.portal.user.UserServiceApplicationTests",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "user-service",
+    "name": "com.studentorgs.portal.user.domain.MembershipApplicationTest",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "user-service",
+    "name": "com.studentorgs.portal.user.UserFlowIntegrationTest",
+    "tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "user-service",
+    "name": "com.studentorgs.portal.user.controller.MembershipControllerTest",
+    "tests": 14,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "user-service",
+    "name": "com.studentorgs.portal.user.controller.AuthControllerTest",
+    "tests": 16,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "user-service",
+    "name": "com.studentorgs.portal.user.service.AuthServiceTest",
+    "tests": 11,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "user-service",
+    "name": "com.studentorgs.portal.user.service.MembershipServiceTest",
+    "tests": 11,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "user-service",
+    "name": "com.studentorgs.portal.user.service.UserServiceTest",
+    "tests": 21,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "user-service",
+    "name": "com.studentorgs.portal.user.controller.InternalUserControllerTest",
+    "tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "user-service",
+    "name": "com.studentorgs.portal.user.controller.UserControllerTest",
+    "tests": 13,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "user-service",
+    "name": "com.studentorgs.portal.user.config.SeedAdminRunnerTest",
+    "tests": 5,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "user-service",
+    "name": "com.studentorgs.portal.user.service.MembershipDecisionNotifierTest",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "user-service",
+    "name": "com.studentorgs.portal.user.service.AccountGuardTest",
+    "tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "content-service",
+    "name": "com.studentorgs.portal.content.ContentServiceApplicationTests",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "content-service",
+    "name": "com.studentorgs.portal.content.ContentFlowIntegrationTest",
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "content-service",
+    "name": "com.studentorgs.portal.content.controller.ContentControllersTest",
+    "tests": 16,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "content-service",
+    "name": "com.studentorgs.portal.content.service.AnnouncementServiceTest",
+    "tests": 7,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "content-service",
+    "name": "com.studentorgs.portal.content.service.AnnouncementNotifierTest",
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "content-service",
+    "name": "com.studentorgs.portal.content.service.DocumentServiceTest",
+    "tests": 16,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "gateway",
+    "name": "com.studentorgs.portal.gateway.InternalPathBlockingFilterTest",
+    "tests": 10,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "module": "gateway",
+    "name": "com.studentorgs.portal.gateway.GatewayApplicationTests",
+    "tests": 9,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+]

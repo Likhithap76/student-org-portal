@@ -1,0 +1,14 @@
+{
+  "id": 12,
+  "title": "QA Past Boundary Fixture",
+  "description": "Synthetic event to verify past categorization",
+  "location": "QA",
+  "startsAt": "2026-11-13T04:32:54.247494Z",
+  "endsAt": "2026-11-13T04:32:56.247494Z",
+  "status": "SCHEDULED",
+  "createdBy": 1,
+  "createdAt": "2026-11-13T04:32:52.299932Z",
+  "updatedAt": "2026-11-13T04:32:52.299932Z",
+  "goingCount": 0,
+  "myResponse": null
+}

@@ -1,0 +1,39 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.3.13)
+
+2026-11-12T22:06:00.180-06:00  INFO [] 3360 --- [event-service] [           main] c.s.p.event.EventServiceApplication      : Starting EventServiceApplication v0.1.0-SNAPSHOT using Java 21.0.13 with PID 3360 (/Users/devarsh/Documents/Codex/2026-11-12/https-github-com-likhithap76-student-org/work/student-org-portal/backend/event-service/target/event-service-0.1.0-SNAPSHOT.jar started by devarsh in /Users/devarsh/Documents/Codex/2026-11-12/https-github-com-likhithap76-student-org/work/student-org-portal/backend)
+2026-11-12T22:06:00.181-06:00  INFO [] 3360 --- [event-service] [           main] c.s.p.event.EventServiceApplication      : The following 1 profile is active: "local"
+2026-11-12T22:06:00.701-06:00  INFO [] 3360 --- [event-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-12T22:06:00.725-06:00  INFO [] 3360 --- [event-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 3 JPA repository interfaces.
+2026-11-12T22:06:00.960-06:00  INFO [] 3360 --- [event-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8082 (http)
+2026-11-12T22:06:00.967-06:00  INFO [] 3360 --- [event-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-12T22:06:00.967-06:00  INFO [] 3360 --- [event-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2026-11-12T22:06:00.980-06:00  INFO [] 3360 --- [event-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-11-12T22:06:00.980-06:00  INFO [] 3360 --- [event-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 781 ms
+2026-11-12T22:06:01.105-06:00  INFO [] 3360 --- [event-service] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-12T22:06:01.139-06:00  INFO [] 3360 --- [event-service] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-11-12T22:06:01.162-06:00  INFO [] 3360 --- [event-service] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-12T22:06:01.342-06:00  INFO [] 3360 --- [event-service] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-12T22:06:01.359-06:00  INFO [] 3360 --- [event-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-12T22:06:01.439-06:00  INFO [] 3360 --- [event-service] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:/Users/devarsh/Documents/Codex/2026-11-12/https-github-com-likhithap76-student-org/work/regression/data/orgportal user=SA
+2026-11-12T22:06:01.440-06:00  INFO [] 3360 --- [event-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-12T22:06:01.457-06:00  WARN [] 3360 --- [event-service] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-11-12T22:06:02.067-06:00  INFO [] 3360 --- [event-service] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-12T22:06:02.120-06:00  INFO [] 3360 --- [event-service] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-12T22:06:02.250-06:00  INFO [] 3360 --- [event-service] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-12T22:06:02.884-06:00  INFO [] 3360 --- [event-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-11-12T22:06:03.085-06:00  INFO [] 3360 --- [event-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8082 (http) with context path '/'
+2026-11-12T22:06:03.096-06:00  INFO [] 3360 --- [event-service] [           main] c.s.p.event.EventServiceApplication      : Started EventServiceApplication in 3.125 seconds (process running for 3.395)
+2026-11-12T22:06:03.747-06:00  INFO [] 3360 --- [event-service] [nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-12T22:06:03.748-06:00  INFO [] 3360 --- [event-service] [nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-12T22:06:03.752-06:00  INFO [] 3360 --- [event-service] [nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2026-11-12T22:11:14.563-06:00  INFO [] 3360 --- [event-service] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-12T22:11:14.587-06:00  INFO [] 3360 --- [event-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-11-12T22:11:19.215-06:00  INFO [] 3360 --- [event-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

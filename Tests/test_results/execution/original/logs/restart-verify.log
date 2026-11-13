@@ -1,0 +1,12 @@
+{'group': 'BR-08', 'name': 'Membership and changed profile survive full backend restart', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-08', 'name': 'Event cancellation survives full restart', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-08', 'name': 'RSVP survives restart without duplicates', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-08', 'name': 'Completed task survives restart', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-08', 'name': 'UI task status persisted through restart', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-08', 'name': 'Attendance survives restart without duplicates', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-08', 'name': 'Committee UI removal survives full restart', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-08', 'name': 'Content link survives full restart', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-08', 'name': 'Notification UI read state survives restart', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-08', 'name': 'UI RSVP persists through restart', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-08', 'name': 'Synthetic AI raw-notes sentinel absent from service logs', 'status': 'PASS', 'detail': 'Limited log-content check, not a complete data-handling audit'}
+SUMMARY 11 checks 11 passed

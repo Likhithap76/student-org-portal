@@ -1,0 +1,18 @@
+
+> student-org-portal-frontend@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v5.4.21 building for production...
+transforming...
+✓ 32 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.37 kB │ gzip:  0.27 kB
+dist/assets/index-CRGhrH_S.css    7.66 kB │ gzip:  2.50 kB
+dist/assets/index-ZLMmG3eF.js   186.90 kB │ gzip: 57.23 kB
+✓ built in 375ms
+npm notice
+npm notice New major version of npm available! 10.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

@@ -1,0 +1,15 @@
+{
+  "eventId": 2,
+  "entries": [
+    {
+      "userId": 2,
+      "displayName": "QA Member 1",
+      "status": "PRESENT",
+      "recordedBy": 1,
+      "recordedAt": "2026-11-13T04:06:43.858491Z"
+    }
+  ],
+  "presentCount": 1,
+  "goingCount": 0,
+  "rate": null
+}

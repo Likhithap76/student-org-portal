@@ -1,0 +1,1 @@
+{'configuredLifetimeSeconds': 20, 'beforeExpiryStatus': 200, 'after21SecondsStatus': 401, 'passed': True, 'scope': '20-second runtime override on exact source; production two-hour waiting period not executed'}

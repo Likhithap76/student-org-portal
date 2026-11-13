@@ -1,0 +1,494 @@
+[
+  {
+    "group": "BR-04",
+    "name": "Report uses organization-local date",
+    "status": "PASS",
+    "detail": "HTTP 200; expected 200; 26 ms"
+  },
+  {
+    "group": "BR-04",
+    "name": "Attendance and completed task reconcile on Central date",
+    "status": "PASS",
+    "detail": "{'userId': 2, 'displayName': 'QA Updated Member', 'email': 'qa-member-1@example.test', 'role': 'MEMBER', 'status': 'ACTIVE', 'eventsAttended': 1, 'tasksCompleted': 1}"
+  },
+  {
+    "group": "BR-04",
+    "name": "CSV for same Central date",
+    "status": "PASS",
+    "detail": "HTTP 200; expected 200; 16 ms"
+  },
+  {
+    "group": "BR-04",
+    "name": "Every CSV row matches JSON counts",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "group": "BR-01",
+    "name": "Attendance remains unique and PRESENT",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "group": "BR-06",
+    "name": "All three notification kinds delivered",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "group": "BR-08",
+    "name": "Register member 4",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 74 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Approve member 4",
+    "status": "PASS",
+    "detail": "HTTP 200; expected 200; 49 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Register member 5",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 72 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Approve member 5",
+    "status": "PASS",
+    "detail": "HTTP 200; expected 200; 14 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Register member 6",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 69 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Approve member 6",
+    "status": "PASS",
+    "detail": "HTTP 200; expected 200; 11 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Register member 7",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 72 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Approve member 7",
+    "status": "PASS",
+    "detail": "HTTP 200; expected 200; 12 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Register member 8",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 71 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Approve member 8",
+    "status": "PASS",
+    "detail": "HTTP 200; expected 200; 11 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Register member 9",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 68 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Approve member 9",
+    "status": "PASS",
+    "detail": "HTTP 200; expected 200; 14 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Register member 10",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 69 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Approve member 10",
+    "status": "PASS",
+    "detail": "HTTP 200; expected 200; 12 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Register member 11",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 68 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Approve member 11",
+    "status": "PASS",
+    "detail": "HTTP 200; expected 200; 11 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Register member 12",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 67 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Approve member 12",
+    "status": "PASS",
+    "detail": "HTTP 200; expected 200; 12 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Register member 13",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 81 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Approve member 13",
+    "status": "PASS",
+    "detail": "HTTP 200; expected 200; 12 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Register member 14",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 69 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Approve member 14",
+    "status": "PASS",
+    "detail": "HTTP 200; expected 200; 12 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Register member 15",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 70 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Approve member 15",
+    "status": "PASS",
+    "detail": "HTTP 200; expected 200; 11 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Register member 16",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 70 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Approve member 16",
+    "status": "PASS",
+    "detail": "HTTP 200; expected 200; 13 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Register member 17",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 68 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Approve member 17",
+    "status": "PASS",
+    "detail": "HTTP 200; expected 200; 11 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Register member 18",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 69 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Approve member 18",
+    "status": "PASS",
+    "detail": "HTTP 200; expected 200; 14 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Register member 19",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 70 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Approve member 19",
+    "status": "PASS",
+    "detail": "HTTP 200; expected 200; 12 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Register member 20",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 87 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Approve member 20",
+    "status": "PASS",
+    "detail": "HTTP 200; expected 200; 31 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Register member 21",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 85 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Approve member 21",
+    "status": "PASS",
+    "detail": "HTTP 200; expected 200; 17 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing event 0",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 49 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing event 1",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 13 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing event 2",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 11 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing event 3",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 9 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing event 4",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 10 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing event 5",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 9 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing event 6",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 10 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing event 7",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 10 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 0",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 125 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 1",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 63 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 2",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 20 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 3",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 18 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 4",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 20 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 5",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 21 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 6",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 21 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 7",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 27 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 8",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 21 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 9",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 21 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 10",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 22 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 11",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 28 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 12",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 23 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 13",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 20 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 14",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 22 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 15",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 21 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 16",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 23 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 17",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 26 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 18",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 21 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 19",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 33 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 20",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 20 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 21",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 18 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 22",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 17 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 23",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 16 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 24",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 21 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 25",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 22 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 26",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 44 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 27",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 27 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create timing task 28",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 26 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "API timing supporting check 15 of 15 under 3 seconds",
+    "status": "PASS",
+    "detail": "[{'path': '/users/roster?size=100', 'ms': 11.32}, {'path': '/users/roster?size=100', 'ms': 9.79}, {'path': '/users/roster?size=100', 'ms': 9.23}, {'path': '/users/roster?size=100', 'ms': 9.98}, {'path': '/users/roster?size=100', 'ms': 6.8}, {'path': '/events?size=100', 'ms': 48.32}, {'path': '/events?size=100', 'ms': 24.38}, {'path': '/events?size=100', 'ms': 14.59}, {'path': '/events?size=100', 'ms': 16.21}, {'path': '/events?size=100', 'ms': 29.41}, {'path': '/tasks/me', 'ms': 17.38}, {'path': '/tasks/me', 'ms': 14.54}, {'path': '/tasks/me', 'ms': 26.74}, {'path': '/tasks/me', 'ms': 13.19}, {'path': '/tasks/me', 'ms': 13.56}]"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create UI announcement fixture",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 87 ms"
+  },
+  {
+    "group": "BR-08",
+    "name": "Create UI link fixture",
+    "status": "PASS",
+    "detail": "HTTP 201; expected 201; 14 ms"
+  }
+]

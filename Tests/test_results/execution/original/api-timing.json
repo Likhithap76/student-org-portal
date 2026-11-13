@@ -1,0 +1,62 @@
+[
+  {
+    "path": "/users/roster?size=100",
+    "ms": 11.32
+  },
+  {
+    "path": "/users/roster?size=100",
+    "ms": 9.79
+  },
+  {
+    "path": "/users/roster?size=100",
+    "ms": 9.23
+  },
+  {
+    "path": "/users/roster?size=100",
+    "ms": 9.98
+  },
+  {
+    "path": "/users/roster?size=100",
+    "ms": 6.8
+  },
+  {
+    "path": "/events?size=100",
+    "ms": 48.32
+  },
+  {
+    "path": "/events?size=100",
+    "ms": 24.38
+  },
+  {
+    "path": "/events?size=100",
+    "ms": 14.59
+  },
+  {
+    "path": "/events?size=100",
+    "ms": 16.21
+  },
+  {
+    "path": "/events?size=100",
+    "ms": 29.41
+  },
+  {
+    "path": "/tasks/me",
+    "ms": 17.38
+  },
+  {
+    "path": "/tasks/me",
+    "ms": 14.54
+  },
+  {
+    "path": "/tasks/me",
+    "ms": 26.74
+  },
+  {
+    "path": "/tasks/me",
+    "ms": 13.19
+  },
+  {
+    "path": "/tasks/me",
+    "ms": 13.56
+  }
+]

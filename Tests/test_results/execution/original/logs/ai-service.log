@@ -1,0 +1,35 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.3.13)
+
+2026-11-12T22:11:52.273-06:00  INFO [] 3685 --- [ai-service] [           main] c.s.portal.ai.AiServiceApplication       : Starting AiServiceApplication v0.1.0-SNAPSHOT using Java 21.0.13 with PID 3685 (/Users/devarsh/Documents/Codex/2026-11-12/https-github-com-likhithap76-student-org/work/student-org-portal/backend/ai-service/target/ai-service-0.1.0-SNAPSHOT.jar started by devarsh in /Users/devarsh/Documents/Codex/2026-11-12/https-github-com-likhithap76-student-org/work/student-org-portal/backend)
+2026-11-12T22:11:52.274-06:00  INFO [] 3685 --- [ai-service] [           main] c.s.portal.ai.AiServiceApplication       : The following 1 profile is active: "local"
+2026-11-12T22:11:52.766-06:00  INFO [] 3685 --- [ai-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-12T22:11:52.786-06:00  INFO [] 3685 --- [ai-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 1 JPA repository interface.
+2026-11-12T22:11:53.019-06:00  INFO [] 3685 --- [ai-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8087 (http)
+2026-11-12T22:11:53.025-06:00  INFO [] 3685 --- [ai-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-12T22:11:53.025-06:00  INFO [] 3685 --- [ai-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2026-11-12T22:11:53.038-06:00  INFO [] 3685 --- [ai-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-11-12T22:11:53.038-06:00  INFO [] 3685 --- [ai-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 747 ms
+2026-11-12T22:11:53.167-06:00  INFO [] 3685 --- [ai-service] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-12T22:11:53.199-06:00  INFO [] 3685 --- [ai-service] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-11-12T22:11:53.216-06:00  INFO [] 3685 --- [ai-service] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-12T22:11:53.354-06:00  INFO [] 3685 --- [ai-service] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-12T22:11:53.368-06:00  INFO [] 3685 --- [ai-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-12T22:11:53.428-06:00  INFO [] 3685 --- [ai-service] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:/Users/devarsh/Documents/Codex/2026-11-12/https-github-com-likhithap76-student-org/work/regression/data/orgportal user=SA
+2026-11-12T22:11:53.429-06:00  INFO [] 3685 --- [ai-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-12T22:11:53.443-06:00  WARN [] 3685 --- [ai-service] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-11-12T22:11:53.826-06:00  INFO [] 3685 --- [ai-service] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-12T22:11:53.845-06:00  INFO [] 3685 --- [ai-service] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-12T22:11:54.365-06:00  INFO [] 3685 --- [ai-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-11-12T22:11:54.499-06:00  INFO [] 3685 --- [ai-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8087 (http) with context path '/'
+2026-11-12T22:11:54.507-06:00  INFO [] 3685 --- [ai-service] [           main] c.s.portal.ai.AiServiceApplication       : Started AiServiceApplication in 2.42 seconds (process running for 2.663)
+2026-11-12T22:11:54.872-06:00  INFO [] 3685 --- [ai-service] [nio-8087-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-12T22:11:54.872-06:00  INFO [] 3685 --- [ai-service] [nio-8087-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-12T22:11:54.873-06:00  INFO [] 3685 --- [ai-service] [nio-8087-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms

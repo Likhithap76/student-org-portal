@@ -1,0 +1,39 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.3.13)
+
+2026-11-12T22:06:04.639-06:00  INFO [] 3372 --- [task-service] [           main] c.s.portal.task.TaskServiceApplication   : Starting TaskServiceApplication v0.1.0-SNAPSHOT using Java 21.0.13 with PID 3372 (/Users/devarsh/Documents/Codex/2026-11-12/https-github-com-likhithap76-student-org/work/student-org-portal/backend/task-service/target/task-service-0.1.0-SNAPSHOT.jar started by devarsh in /Users/devarsh/Documents/Codex/2026-11-12/https-github-com-likhithap76-student-org/work/student-org-portal/backend)
+2026-11-12T22:06:04.642-06:00  INFO [] 3372 --- [task-service] [           main] c.s.portal.task.TaskServiceApplication   : The following 1 profile is active: "local"
+2026-11-12T22:06:05.319-06:00  INFO [] 3372 --- [task-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-12T22:06:05.345-06:00  INFO [] 3372 --- [task-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 3 JPA repository interfaces.
+2026-11-12T22:06:05.587-06:00  INFO [] 3372 --- [task-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+2026-11-12T22:06:05.597-06:00  INFO [] 3372 --- [task-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-12T22:06:05.598-06:00  INFO [] 3372 --- [task-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2026-11-12T22:06:05.610-06:00  INFO [] 3372 --- [task-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-11-12T22:06:05.611-06:00  INFO [] 3372 --- [task-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 936 ms
+2026-11-12T22:06:05.744-06:00  INFO [] 3372 --- [task-service] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-12T22:06:05.777-06:00  INFO [] 3372 --- [task-service] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-11-12T22:06:05.794-06:00  INFO [] 3372 --- [task-service] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-12T22:06:05.935-06:00  INFO [] 3372 --- [task-service] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-12T22:06:05.949-06:00  INFO [] 3372 --- [task-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-12T22:06:06.025-06:00  INFO [] 3372 --- [task-service] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:/Users/devarsh/Documents/Codex/2026-11-12/https-github-com-likhithap76-student-org/work/regression/data/orgportal user=SA
+2026-11-12T22:06:06.027-06:00  INFO [] 3372 --- [task-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-12T22:06:06.041-06:00  WARN [] 3372 --- [task-service] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-11-12T22:06:06.469-06:00  INFO [] 3372 --- [task-service] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-12T22:06:06.493-06:00  INFO [] 3372 --- [task-service] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-12T22:06:06.644-06:00  INFO [] 3372 --- [task-service] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-12T22:06:07.216-06:00  INFO [] 3372 --- [task-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-11-12T22:06:07.350-06:00  INFO [] 3372 --- [task-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+2026-11-12T22:06:07.358-06:00  INFO [] 3372 --- [task-service] [           main] c.s.portal.task.TaskServiceApplication   : Started TaskServiceApplication in 2.971 seconds (process running for 3.405)
+2026-11-12T22:06:07.961-06:00  INFO [] 3372 --- [task-service] [nio-8083-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-12T22:06:07.961-06:00  INFO [] 3372 --- [task-service] [nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-12T22:06:07.962-06:00  INFO [] 3372 --- [task-service] [nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-11-12T22:11:14.447-06:00  INFO [] 3372 --- [task-service] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-12T22:11:14.477-06:00  INFO [] 3372 --- [task-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-11-12T22:11:23.835-06:00  INFO [] 3372 --- [task-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

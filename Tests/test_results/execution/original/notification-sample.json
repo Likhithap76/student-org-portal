@@ -1,0 +1,32 @@
+[
+  {
+    "id": 6,
+    "kind": "announcement",
+    "message": "New announcement: QA Regression Announcement",
+    "referenceTable": "announcement",
+    "referenceId": 1,
+    "createdAt": "2026-11-13T04:06:28.719344Z",
+    "readAt": null,
+    "read": false
+  },
+  {
+    "id": 4,
+    "kind": "task_assigned",
+    "message": "You were assigned a task: QA Regression Task",
+    "referenceTable": "task",
+    "referenceId": 1,
+    "createdAt": "2026-11-13T04:06:28.363299Z",
+    "readAt": null,
+    "read": false
+  },
+  {
+    "id": 1,
+    "kind": "application_decision",
+    "message": "Your membership application was approved. Welcome!",
+    "referenceTable": "membership_application",
+    "referenceId": 1,
+    "createdAt": "2026-11-13T04:06:26.837697Z",
+    "readAt": null,
+    "read": false
+  }
+]

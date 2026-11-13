@@ -1,0 +1,92 @@
+{'group': 'BR-01', 'name': 'Register member 1', 'status': 'PASS', 'detail': 'HTTP 201; expected 201; 90 ms'}
+{'group': 'BR-01', 'name': 'Approve member 1', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 213 ms'}
+{'group': 'BR-01', 'name': 'Register member 2', 'status': 'PASS', 'detail': 'HTTP 201; expected 201; 76 ms'}
+{'group': 'BR-01', 'name': 'Approve member 2', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 17 ms'}
+{'group': 'BR-01', 'name': 'Register member 3', 'status': 'PASS', 'detail': 'HTTP 201; expected 201; 72 ms'}
+{'group': 'BR-01', 'name': 'Pending applicant cannot read events', 'status': 'PASS', 'detail': 'HTTP 403; expected 403; 165 ms'}
+{'group': 'BR-01', 'name': 'Reject membership', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 17 ms'}
+{'group': 'BR-01', 'name': 'Rejection persists', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-01', 'name': 'Rejected applicant can reapply', 'status': 'PASS', 'detail': 'HTTP 201; expected 201; 9 ms'}
+{'group': 'BR-01', 'name': 'Approval persists after fresh login', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-02', 'name': 'Create event', 'status': 'PASS', 'detail': 'HTTP 201; expected 201; 86 ms'}
+{'group': 'BR-02', 'name': 'Edit event', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 69 ms'}
+{'group': 'BR-02', 'name': 'Edited event persists', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-02', 'name': 'RSVP GOING', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 23 ms'}
+{'group': 'BR-02', 'name': 'RSVP state and count persisted', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-02', 'name': 'RSVP NOT_GOING', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 12 ms'}
+{'group': 'BR-02', 'name': 'RSVP state and count persisted', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-02', 'name': 'RSVP GOING', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 12 ms'}
+{'group': 'BR-02', 'name': 'RSVP state and count persisted', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-02', 'name': 'RSVP GOING', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 10 ms'}
+{'group': 'BR-02', 'name': 'RSVP state and count persisted', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-02', 'name': 'Repeated RSVP remains unique', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-02', 'name': 'Create near-start attendance event', 'status': 'PASS', 'detail': 'HTTP 201; expected 201; 9 ms'}
+{'group': 'BR-03', 'name': 'Create committee', 'status': 'PASS', 'detail': 'HTTP 201; expected 201; 281 ms'}
+{'group': 'BR-03', 'name': 'Add committee members idempotently', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 60 ms'}
+{'group': 'BR-03', 'name': 'Add committee members idempotently', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 21 ms'}
+{'group': 'BR-03', 'name': 'Committee members unique', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-03', 'name': 'Assign committee task', 'status': 'PASS', 'detail': 'HTTP 201; expected 201; 46 ms'}
+{'group': 'BR-03', 'name': 'Assigned task appears for member', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-03', 'name': 'Cannot remove member with open task', 'status': 'PASS', 'detail': 'HTTP 422; expected 422; 20 ms'}
+{'group': 'BR-03', 'name': 'Task transition IN_PROGRESS', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 16 ms'}
+{'group': 'BR-03', 'name': 'Task status response', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-03', 'name': 'Task transition DONE', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 10 ms'}
+{'group': 'BR-03', 'name': 'Task status response', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-03', 'name': 'Task transition IN_PROGRESS', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 11 ms'}
+{'group': 'BR-03', 'name': 'Task status response', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-03', 'name': 'Task transition DONE', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 10 ms'}
+{'group': 'BR-03', 'name': 'Task status response', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-03', 'name': 'Remove member without open task', 'status': 'PASS', 'detail': 'HTTP 204; expected 204; 15 ms'}
+{'group': 'BR-03', 'name': 'Removal persists', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-06', 'name': 'Publish announcement', 'status': 'PASS', 'detail': 'HTTP 201; expected 201; 249 ms'}
+{'group': 'BR-06', 'name': 'Member sees announcement', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-06', 'name': 'Create HTTPS document link', 'status': 'PASS', 'detail': 'HTTP 201; expected 201; 21 ms'}
+{'group': 'BR-06', 'name': 'Reject HTTP document link', 'status': 'PASS', 'detail': 'HTTP 422; expected 422; 16 ms'}
+{'group': 'BR-06', 'name': 'Edit document link', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 21 ms'}
+{'group': 'BR-06', 'name': 'Member sees edited link', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-06', 'name': 'Membership task and announcement notices delivered', 'status': 'PASS', 'detail': '[None, None, None]'}
+{'group': 'BR-06', 'name': 'Mark notification read', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 19 ms'}
+{'group': 'BR-06', 'name': 'Read state persists', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-06', 'name': 'Mark all notifications read', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 18 ms'}
+{'group': 'BR-06', 'name': 'Unread count becomes zero', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-06', 'name': 'Delete document link', 'status': 'PASS', 'detail': 'HTTP 204; expected 204; 15 ms'}
+{'group': 'BR-06', 'name': 'Delete announcement', 'status': 'PASS', 'detail': 'HTTP 204; expected 204; 13 ms'}
+{'group': 'BR-06', 'name': 'Deleted content absent', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-01', 'name': 'Attendance PRESENT', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 162 ms'}
+{'group': 'BR-01', 'name': 'Attendance ABSENT', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 35 ms'}
+{'group': 'BR-01', 'name': 'Attendance PRESENT', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 39 ms'}
+{'group': 'BR-04', 'name': 'Engagement valid date range', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 208 ms'}
+{'group': 'BR-04', 'name': 'Engagement reconciles attendance and completed task', 'status': 'FAIL', 'detail': "{'userId': 2, 'displayName': 'QA Member 1', 'email': 'qa-member-1@example.test', 'role': 'MEMBER', 'status': 'ACTIVE', 'eventsAttended': 0, 'tasksCompleted': 0}"}
+{'group': 'BR-04', 'name': 'Authenticated CSV export', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 15 ms'}
+{'group': 'BR-04', 'name': 'CSV includes same member and counts', 'status': 'FAIL', 'detail': "[{'user_id': '1', 'display_name': 'Administrator', 'email': 'qa-officer@example.test', 'role': 'officer_admin', 'status': 'active', 'events_attended': '0', 'tasks_completed': '0'}, {'user_id': '2', 'display_name': 'QA Member 1', 'email': 'qa-member-1@example.test', 'role': 'member', 'status': 'active', 'events_attended': '0', 'tasks_completed': '0'}]"}
+{'group': 'BR-04', 'name': 'Invalid report date range rejected', 'status': 'PASS', 'detail': 'HTTP 422; expected 422; 16 ms'}
+{'group': 'BR-04', 'name': 'Alternate empty date range', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 10 ms'}
+{'group': 'BR-04', 'name': 'Alternate range totals zero', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-05', 'name': 'Edit profile', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 12 ms'}
+{'group': 'BR-05', 'name': 'Profile persists on login', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-05', 'name': 'Change password', 'status': 'PASS', 'detail': 'HTTP 204; expected 204; 148 ms'}
+{'group': 'BR-05', 'name': 'Old password rejected', 'status': 'PASS', 'detail': 'HTTP 401; expected 401; 79 ms'}
+{'group': 'BR-05', 'name': 'Promote member', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 14 ms'}
+{'group': 'BR-05', 'name': 'Promoted officer permitted', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 18 ms'}
+{'group': 'BR-05', 'name': 'Demote officer', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 9 ms'}
+{'group': 'BR-05', 'name': 'Demotion enforced with old token', 'status': 'PASS', 'detail': 'HTTP 403; expected 403; 5 ms'}
+{'group': 'BR-05', 'name': 'Deactivate account', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 7 ms'}
+{'group': 'BR-05', 'name': 'Inactive member denied', 'status': 'PASS', 'detail': 'HTTP 403; expected 403; 9 ms'}
+{'group': 'BR-05', 'name': 'Reactivate account', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 7 ms'}
+{'group': 'BR-05', 'name': 'Reactivated member access', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 32 ms'}
+{'group': 'BR-08', 'name': 'Unauthenticated request', 'status': 'PASS', 'detail': 'HTTP 401; expected 401; 6 ms'}
+{'group': 'BR-08', 'name': 'Invalid token', 'status': 'PASS', 'detail': 'HTTP 401; expected 401; 1 ms'}
+{'group': 'BR-08', 'name': 'Member roster restriction', 'status': 'PASS', 'detail': 'HTTP 403; expected 403; 6 ms'}
+{'group': 'BR-08', 'name': 'Member reporting restriction', 'status': 'PASS', 'detail': 'HTTP 403; expected 403; 10 ms'}
+{'group': 'BR-08', 'name': 'Member event creation restriction', 'status': 'PASS', 'detail': 'HTTP 403; expected 403; 9 ms'}
+{'group': 'BR-08', 'name': 'Member attendance write restriction', 'status': 'PASS', 'detail': 'HTTP 403; expected 403; 5 ms'}
+{'group': 'BR-08', 'name': 'Member committee restriction', 'status': 'PASS', 'detail': 'HTTP 403; expected 403; 24 ms'}
+{'group': 'BR-08', 'name': 'Member announcement restriction', 'status': 'PASS', 'detail': 'HTTP 403; expected 403; 28 ms'}
+{'group': 'BR-08', 'name': 'Member AI restriction', 'status': 'PASS', 'detail': 'HTTP 403; expected 403; 178 ms'}
+{'group': 'BR-08', 'name': 'Gateway internal path restriction', 'status': 'PASS', 'detail': 'HTTP 403; expected 403; 1 ms'}
+{'group': 'BR-02', 'name': 'Cancel event', 'status': 'PASS', 'detail': 'HTTP 200; expected 200; 14 ms'}
+{'group': 'BR-02', 'name': 'Cancelled event persists', 'status': 'PASS', 'detail': ''}
+{'group': 'BR-07', 'name': 'AI empty input rejected', 'status': 'PASS', 'detail': 'HTTP 422; expected 422; 34 ms'}
+{'group': 'BR-07', 'name': 'AI over-limit input rejected', 'status': 'PASS', 'detail': 'HTTP 422; expected 422; 9 ms'}
+{'group': 'BR-07', 'name': 'Unavailable model gives graceful 503', 'status': 'PASS', 'detail': 'HTTP 503; expected 503; 79 ms'}
+SUMMARY 91 checks 89 passed

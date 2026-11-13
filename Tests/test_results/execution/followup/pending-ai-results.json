@@ -1,0 +1,100 @@
+[
+  {
+    "case": "cold",
+    "notes": "The committee decided to hold a volunteer fair on December 5, 2026. Alex will book the room by November 20, 2026. Jamie will prepare the announcement by November 22, 2026.",
+    "status": 503,
+    "seconds": 0.949,
+    "response": {
+      "type": "about:blank",
+      "title": "Service Unavailable",
+      "status": 503,
+      "detail": "The AI service is unavailable. Please try again later",
+      "instance": "/ai/summaries",
+      "timestamp": "2026-11-13T04:25:36.635068Z"
+    }
+  },
+  {
+    "case": "warm1",
+    "notes": "The committee decided to hold a volunteer fair on December 5, 2026. Alex will book the room by November 20, 2026. Jamie will prepare the announcement by November 22, 2026.",
+    "status": 503,
+    "seconds": 0.3,
+    "response": {
+      "type": "about:blank",
+      "title": "Service Unavailable",
+      "status": 503,
+      "detail": "The AI service is unavailable. Please try again later",
+      "instance": "/ai/summaries",
+      "timestamp": "2026-11-13T04:25:36.944038Z"
+    }
+  },
+  {
+    "case": "warm2",
+    "notes": "The committee decided to hold a volunteer fair on December 5, 2026. Alex will book the room by November 20, 2026. Jamie will prepare the announcement by November 22, 2026.",
+    "status": 503,
+    "seconds": 0.291,
+    "response": {
+      "type": "about:blank",
+      "title": "Service Unavailable",
+      "status": 503,
+      "detail": "The AI service is unavailable. Please try again later",
+      "instance": "/ai/summaries",
+      "timestamp": "2026-11-13T04:25:37.234965Z"
+    }
+  },
+  {
+    "case": "no_tasks",
+    "notes": "The group discussed possible event ideas. No decisions were made and no tasks were assigned.",
+    "status": 503,
+    "seconds": 0.295,
+    "response": {
+      "type": "about:blank",
+      "title": "Service Unavailable",
+      "status": 503,
+      "detail": "The AI service is unavailable. Please try again later",
+      "instance": "/ai/summaries",
+      "timestamp": "2026-11-13T04:25:37.530328Z"
+    }
+  },
+  {
+    "case": "missing_year",
+    "notes": "The group agreed to host a workshop. Sam will book the room by November 10. Lee will prepare slides by November 15.",
+    "status": 503,
+    "seconds": 0.292,
+    "response": {
+      "type": "about:blank",
+      "title": "Service Unavailable",
+      "status": 503,
+      "detail": "The AI service is unavailable. Please try again later",
+      "instance": "/ai/summaries",
+      "timestamp": "2026-11-13T04:25:37.823084Z"
+    }
+  },
+  {
+    "case": "relative_date",
+    "notes": "The group agreed to review the budget. Jordan will prepare a draft next week.",
+    "status": 503,
+    "seconds": 0.291,
+    "response": {
+      "type": "about:blank",
+      "title": "Service Unavailable",
+      "status": 503,
+      "detail": "The AI service is unavailable. Please try again later",
+      "instance": "/ai/summaries",
+      "timestamp": "2026-11-13T04:25:38.114Z"
+    }
+  },
+  {
+    "case": "five_payload_audit",
+    "notes": "The committee decided to organize a reading group. Taylor will draft the agenda by December 10, 2026.",
+    "status": 503,
+    "seconds": 0.293,
+    "response": {
+      "type": "about:blank",
+      "title": "Service Unavailable",
+      "status": 503,
+      "detail": "The AI service is unavailable. Please try again later",
+      "instance": "/ai/summaries",
+      "timestamp": "2026-11-13T04:25:38.404028Z"
+    }
+  }
+]

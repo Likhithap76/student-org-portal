@@ -1,0 +1,71 @@
+[
+  {
+    "id": "P-01",
+    "status": "PASS",
+    "test": "Officer creates event through UI"
+  },
+  {
+    "id": "P-02",
+    "status": "PASS",
+    "test": "Officer edits event through UI"
+  },
+  {
+    "id": "P-03",
+    "status": "PASS",
+    "test": "Officer cancels event; item moves to Cancelled Events group"
+  },
+  {
+    "id": "P-04",
+    "status": "PASS",
+    "test": "Valid browser report dates applied and member counts visible"
+  },
+  {
+    "id": "P-05",
+    "status": "PASS",
+    "test": "Alternate browser date range displays zero member counts"
+  },
+  {
+    "id": "P-06",
+    "status": "PASS",
+    "test": "Browser rejects reversed report date range"
+  },
+  {
+    "id": "P-07",
+    "status": "PASS",
+    "test": "Officer creates committee, adds member, and assigns task through UI"
+  },
+  {
+    "id": "P-08",
+    "status": "PASS",
+    "test": "UI-assigned task appears for its member after fresh login"
+  },
+  {
+    "id": "P-09",
+    "status": "PASS",
+    "test": "15 rendered-page load/refresh checks under 3 seconds",
+    "detail": "Browser-tool wall-clock timings; 20 active members plus officer, 11 events, 31 tasks"
+  },
+  {
+    "id": "P-10",
+    "status": "PASS",
+    "test": "Expired token request returns user to login",
+    "detail": "Isolated same-source instance with JWT lifetime overridden to 20s; next request after 25.5s. Production 2-hour duration not waited."
+  },
+  {
+    "id": "P-11",
+    "status": "PASS",
+    "test": "Review/edit copy/discard controls",
+    "detail": "Manually entered synthetic summary, not generated AI output; clipboard content verified and discard cleared summary"
+  },
+  {
+    "id": "P-12",
+    "status": "PASS",
+    "test": "Officer publishes announcement and saves HTTPS resource through UI"
+  },
+  {
+    "id": "P-13",
+    "status": "PASS",
+    "test": "Past-event classification after end-time boundary",
+    "detail": "API-created short-duration fixture appears in Past Events; no RSVP/Edit/Cancel controls"
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "uniqueSyntheticInputs": 5,
+  "inputsContainEmails": false,
+  "inputsContainStudentIds": false,
+  "inputsContainFixturePassword": false,
+  "rawNotesFoundInApplicationServiceLogs": false,
+  "scope": "Five distinct synthetic inputs submitted to live AI endpoint; model loading failed. Application service logs and ai_request_log schema inspected. Successful generation storage path not exercised."
+}

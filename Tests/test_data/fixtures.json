@@ -1,0 +1,8 @@
+{
+  "officerEmail": "qa-officer@example.test",
+  "initialPassword": "Regression2026!Pass",
+  "changedMemberPassword": "Regression2026!Changed",
+  "members": "qa-member-N@example.test",
+  "timezone": "America/Chicago",
+  "warning": "Disposable local synthetic credentials. Never deploy."
+}

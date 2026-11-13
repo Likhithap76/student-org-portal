@@ -1,0 +1,11 @@
+column_name
+id
+input_chars
+latency_ms
+outcome
+requested_at
+user_id
+(6 rows, 12 ms)
+outcome       | ?column?
+service_error | 10
+(1 row, 0 ms)
